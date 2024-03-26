@@ -1,12 +1,17 @@
 import mongoose, { Schema } from "mongoose";
+import { submissionFieldSchema } from "./fieldSubmissions.model.js";
 
 const submissionsSchema = new Schema(
   {
-    formId: { type: Schema.Types.ObjectId, ref: "Form", required: true },
+    formId: {
+      type: Schema.Types.ObjectId,
+      ref: "FormTemplate",
+      required: true,
+    },
     data: [
       {
-        name: { type: String, required: true },
-        value: { type: String, required: true },
+        type: submissionFieldSchema,
+        required: true,
       },
     ],
   },
