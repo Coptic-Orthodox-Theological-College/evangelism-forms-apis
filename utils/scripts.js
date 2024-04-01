@@ -6,12 +6,9 @@ export const createAdminUser = async () => {
     const adminUser = await User.findOne({ role: 'admin' });
     if (adminUser) return;
 
-    const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUNDS));
-    const hashedPassword = await bcrypt.hash('admin', salt);
-
     const newAdmin = new User({
-      name: 'Admin',
-      password: hashedPassword,
+      username: 'Admin',
+      password: "admin1234",
       role: 'admin'
     });
 

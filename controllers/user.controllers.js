@@ -1,39 +1,48 @@
-import bcrypt from 'bcrypt';
-import User from '../models/user.model.js';
-import { generateToken } from '../utils/jwt.js';
+import User from "../models/user.model.js";
+import { generateToken } from "../utils/jwt.js";
 
 export const login = async (req, res) => {
-  const { name, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ name });
-    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+    const user = await User.findOne({ username });
+    if (!user) return res.status(400).json({ message: "Invalid credentials" });
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+    const isMatch = user.comparePassword(password);
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = generateToken({ userId: user._id, role: user.role });
     res.json({ token });
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-export const createUser = async (req, res) => {
-  const { name, password, role } = req.body;
+export const createUsers = async (req, res) => {
+  const { numberOfUsers } = req.body;
 
+  if (!numberOfUsers || numberOfUsers < 1) {
+    return res.status(400).json({ message: "Invalid number of users" });
+  }
+
+  let users = [];
+  for (let i = 0; i < numberOfUsers; i++) {
+    let username = "user_" + Math.random().toString(36).substring(4);
+    let password = "pass_" + Math.random().toString(36).substring(4);
+    let newUser = new User({ username, password });
+    try {
+      await newUser.save();
+      users.push({ username, password });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Server error" });
+    }
+  }
   try {
-    const existingUser = await User.findOne({ name });
-    if (existingUser) return res.status(400).json({ message: 'User already exists' });
-
-    const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUNDS));
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    const newUser = new User({ name, password: hashedPassword, role });
-    await newUser.save();
-
-    res.status(201).json({ message: 'User created' });
+    res.json({ message: "Users created successfully", users });
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
   }
 };
