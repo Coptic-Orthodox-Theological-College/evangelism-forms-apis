@@ -5,6 +5,6 @@ const activitySchema = new Schema({
   description: { type: String, required: true },
 });
 
-const Activity = mongoose.model("Activity", activitySchema);
+const Activity = mongoose.model("Activities", activitySchema);
 
 export default Activity;

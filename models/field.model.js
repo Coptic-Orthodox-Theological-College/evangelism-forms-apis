@@ -1,8 +1,9 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema } from "mongoose";
 
 export const FieldSchema = new Schema({
   order: { type: Number, required: true },
   name: { type: String, required: true },
+  description: { type: String, required: false },
   isRequired: { type: Boolean, required: true },
   isEnum: { type: Boolean, required: true },
   values: {
@@ -13,13 +14,6 @@ export const FieldSchema = new Schema({
   },
   numberOfChoices: {
     type: Number,
-    required: function () {
-      return this.isEnum;
-    },
     default: 1,
   },
 });
-
-const Field = mongoose.model("Field", FieldSchema);
-
-export default Field;

@@ -3,17 +3,17 @@ import { submissionFieldSchema } from "./fieldSubmissions.model.js";
 
 const submissionsSchema = new Schema(
   {
-    formId: {
+    userId: {
       type: Schema.Types.ObjectId,
-      ref: "FormTemplate",
+      ref: "Users",
       required: true,
     },
-    data: [
-      {
-        type: submissionFieldSchema,
-        required: true,
-      },
-    ],
+    formTemplateId: {
+      type: Schema.Types.ObjectId,
+      ref: "FormTemplates",
+      required: true,
+    },
+    data: [submissionFieldSchema],
   },
   { timestamps: true }
 );

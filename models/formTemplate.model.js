@@ -5,14 +5,9 @@ const FormTemplateSchema = new Schema({
   name: { type: String, required: true },
   activityId: { type: Schema.Types.ObjectId, ref: "Activity", required: true },
   description: { type: String, required: true },
-  fields: [
-    {
-      type: FieldSchema,
-      required: true,
-    },
-  ],
+  fields: [FieldSchema],
 });
 
-const FormTemplate = mongoose.model("FormTemplate", FormTemplateSchema);
+const FormTemplate = mongoose.model("FormTemplates", FormTemplateSchema);
 
 export default FormTemplate;
