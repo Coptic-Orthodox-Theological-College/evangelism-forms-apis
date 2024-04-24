@@ -122,6 +122,25 @@ export const createSubmission = async (req, res) => {
   }
 };
 
+export const getFormTemplate = async (req, res) => {
+  const { formTemplateId } = req.params;
+
+  if (!formTemplateId) {
+    return res.status(400).json({ message: "Form template id is required" });
+  }
+
+  try {
+    const formTemplate = await FormTemplate.findOne({ _id: formTemplateId });
+    if (!formTemplate) {
+      return res.status(404).json({ message: "Form template not found" });
+    }
+    res.json(formTemplate);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
 const checkFieldData = async (formFields, allData) => {
   for (let field of formFields) {
     const fieldData = await allData.find((data) => data.fieldId === field._id.toString());

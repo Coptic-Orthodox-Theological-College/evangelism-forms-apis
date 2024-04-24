@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.use('/users', userRoutes);
 router.use('/activities', activityRouter);
-router.use('/formTemplates', formTemplateRouter);
+router.use('/form-templates', formTemplateRouter);
 
 export default router;
