@@ -47,18 +47,19 @@ const validateFields = (fields) => {
     orderSet.add(field.order);
   }
 
+  let errMessages = "";
   for (let field of fields) {
-    let errMessages = "";
     if (!field.name) errMessages += "Name is required. ";
     if (field.isEnum) {
       if (!field.values || field.values.length === 0) errMessages += "Values are required. ";
       if (field.numberOfChoices > field.values.length)
         errMessages += "Number of choices must be less than or equal to the number of values. ";
     }
-    if (!field.isRequired) errMessages += "isRequired is required. ";
-    if (errMessages) {
-      return { valid: false, message: errMessages };
-    }
+    if (field.isRequired === undefined) errMessages += "isRequired is required. ";
+  }
+
+  if (errMessages) {
+    return { valid: false, message: errMessages };
   }
 
   return { valid: true };
