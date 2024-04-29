@@ -12,7 +12,7 @@ export const login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ success: false, message: "خطأ في كلمة المرور" });
 
     const token = generateToken({ userId: user._id, role: user.role });
-    res.json({ success: true, token, message: "تم تسجيل الدخول بنجاح" });
+    res.json({ success: true, token, role: user.role, message: "تم تسجيل الدخول بنجاح" });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });
