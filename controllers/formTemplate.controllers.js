@@ -11,13 +11,18 @@ export const createFormTemplate = async (req, res) => {
   }
 
   if (!name || !description || !fields || !activityId) {
-    return res.status(400).json({ message: "Invalid input" });
+    const missingFields = [];
+    if (!name) missingFields.push("الاسم");
+    if (!description) missingFields.push("الوصف");
+    if (!fields) missingFields.push("الحقول");
+    if (!activityId) missingFields.push("رقم النشاط");
+    return res.status(400).json({ message: `الحقول التالية مطلوبة: ${missingFields.join(", ")}`, success: false });
   }
 
   const { valid, message } = validateFields(fields);
 
   if (!valid) {
-    return res.status(400).json({ message });
+    return res.status(400).json({ success: false, message });
   }
 
   const newFormTemplate = new FormTemplate({ name, description, fields, activityId });
@@ -32,7 +37,7 @@ export const createFormTemplate = async (req, res) => {
 
 const validateFields = (fields) => {
   if (!fields || fields.length === 0) {
-    return { valid: false, message: "Fields are required" };
+    return { valid: false, message: "يجب تحديد الحقول" };
   }
 
   // sort fields by order
@@ -42,20 +47,20 @@ const validateFields = (fields) => {
   const orderSet = new Set();
   for (let field of fields) {
     if (orderSet.has(field.order)) {
-      return { valid: false, message: "Order must be unique" };
+      return { valid: false, message: "الترتيب يجب أن يكون فريدًا" };
     }
     orderSet.add(field.order);
   }
 
   let errMessages = "";
   for (let field of fields) {
-    if (!field.name) errMessages += "Name is required. ";
+    if (!field.name) errMessages += "الاسم مطلوب. ";
     if (field.isEnum) {
-      if (!field.values || field.values.length === 0) errMessages += "Values are required. ";
+      if (!field.values || field.values.length === 0) errMessages += "قيم الحقل المعرفة مطلوبة. ";
       if (field.numberOfChoices > field.values.length)
-        errMessages += "Number of choices must be less than or equal to the number of values. ";
+        errMessages += "عدد الخيارات يجب أن يكون أقل من أو يساوي عدد القيم المعرفة. ";
     }
-    if (field.isRequired === undefined) errMessages += "isRequired is required. ";
+    if (field.isRequired === undefined) errMessages += "يجب تحديد ما إذا كان الحقل مطلوبًا أم لا. ";
   }
 
   if (errMessages) {
@@ -63,6 +68,58 @@ const validateFields = (fields) => {
   }
 
   return { valid: true };
+};
+
+export const updateFormTemplate = async (req, res) => {
+  const formTemplateId = req.params.formTemplateId;
+  const { name, description, fields, activityId } = req.body;
+
+  if (!formTemplateId) {
+    return res.status(400).json({ success: false, message: "برجاء تحديد نموذج الاستمارة" });
+  }
+
+  const existingFormTemplate = await FormTemplate.findOne({ _id: formTemplateId });
+
+  if (!existingFormTemplate) {
+    return res.status(404).json({ success: false, message: "نموذج الاستمارة غير موجود" });
+  }
+
+  if (name) existingFormTemplate.name = name;
+  if (description) existingFormTemplate.description = description;
+  if (activityId) existingFormTemplate.activityId = activityId;
+
+  if (fields) {
+    // const { valid, message } = validateFields(fields);
+
+    // if (!valid) {
+    //   return res.status(400).json({ success: false, message });
+    // }
+
+    for (let field of fields) {
+      const existingField = existingFormTemplate.fields.find((f) => f._id.toString() === field._id);
+      if (field.delete === true) {
+        existingFormTemplate.fields = existingFormTemplate.fields.filter((f) => f._id.toString() !== field._id);
+      }
+      if (existingField) {
+        if (field.order) existingField.order = field.order;
+        if (field.name) existingField.name = field.name;
+        if (field.isRequired !== undefined) existingField.isRequired = field.isRequired;
+        if (field.isEnum !== undefined) existingField.isEnum = field.isEnum;
+        if (field.values) existingField.values = field.values;
+        if (field.numberOfChoices) existingField.numberOfChoices = field.numberOfChoices;
+      } else {
+        existingFormTemplate.fields.push(field);
+      }
+    }
+  }
+
+  try {
+    await existingFormTemplate.save();
+    res.json({ success: true, message: "تم تحديث نموذج الاستمارة بنجاح", existingFormTemplate });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
 };
 
 export const listAllFields = async (req, res) => {
