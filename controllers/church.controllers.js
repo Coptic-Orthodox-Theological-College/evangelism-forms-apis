@@ -36,3 +36,13 @@ export const createChurch = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 }
+
+export const getChurchs = async (req, res) => {
+  try {
+    const churchs = await Church.find();
+    res.json({ success: true, churchs });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
