@@ -26,7 +26,7 @@ export const createActivity = async (req, res) => {
 export const getActivities = async (req, res) => {
   try {
     const activities = await Activity.find();
-    res.json(activities);
+    res.json({ success: true, activities });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });

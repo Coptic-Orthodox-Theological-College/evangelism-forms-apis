@@ -234,3 +234,19 @@ const checkFieldData = async (formFields, allData) => {
   }
   return { valid: true };
 };
+
+export const listAllFormTemplatesByActivityId = async (req, res) => {
+  const { activityId } = req.params;
+
+  if (!activityId) {
+    return res.status(400).json({ message: "Activity id is required" });
+  }
+
+  try {
+    const formTemplates = await FormTemplate.find({ activityId });
+    res.json({ success: true, formTemplates });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
