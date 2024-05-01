@@ -12,7 +12,7 @@ export const login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ success: false, message: "خطأ في كلمة المرور" });
 
     const token = generateToken({ userId: user._id, role: user.role });
-    res.json({ success: true, token, role: user.role, message: "تم تسجيل الدخول بنجاح" });
+    res.json({ success: true, token, role: user.role, userId: user._id, message: "تم تسجيل الدخول بنجاح" });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });
@@ -47,33 +47,33 @@ export const createUsers = async (req, res) => {
   }
 };
 
-// create admin
+export const updateUser = async (req, res) => {
+  const { userId } = req.params;
+  const { username, password } = req.body;
 
-// check if church frist time login 
-//    - if yes create church and return the data
-//    - if no return the data
+  try {
+    let user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
 
-// create church if first time login
+    if (username) user.username = username;
+    if (password)
+      password.length < 8
+        ? res.status(400).json({ message: "Password must be at least 8 characters" })
+        : user.password = password;
+    await user.save();
+    res.json({ success: true, message: "User updated" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
 
-// CRUD church
-
-/**
-  **church schema
-  churchName
-  churchLocation
-  churchPhoneNumber
- */
-
-// --------------------------------------------------------------------------------------------------------
-
-// Activity CRUD -> Admin
-
-// --------------------------------------------------------------------------------------------------------
-
-// Form
-
-// --------> Admin
-// create formTemplate + CRUD
-
-// --------> Church
-// submit form + CRUD
+export const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}

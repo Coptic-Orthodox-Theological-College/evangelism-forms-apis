@@ -1,4 +1,5 @@
 import Activity from "../models/activity.model.js";
+import FormTemplate from "../models/formTemplate.model.js";
 
 export const createActivity = async (req, res) => {
   const { name, description } = req.body;
@@ -25,7 +26,13 @@ export const createActivity = async (req, res) => {
 
 export const getActivities = async (req, res) => {
   try {
-    const activities = await Activity.find();
+    const data = await Activity.find();
+    let activities = [];
+    for (let i = 0; i < data.length; i++) {
+      const activity = data[i]._doc;
+      const formTemplates = await FormTemplate.find({ activityId: activity._id });
+      activities.push({ ...activity, formTemplatesCount: formTemplates.length });
+    }
     res.json({ success: true, activities });
   } catch (err) {
     console.log(err);

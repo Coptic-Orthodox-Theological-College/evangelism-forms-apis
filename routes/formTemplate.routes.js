@@ -8,14 +8,15 @@ import {
 } from "../controllers/formTemplate.controllers.js";
 
 import express from "express";
+import { verifyToken } from "../utils/jwt.js";
 
 const formTemplateRouter = express.Router();
 
 formTemplateRouter.post("/create", createFormTemplate);
+formTemplateRouter.get("/:formTemplateId", getFormTemplate);
 formTemplateRouter.put("/update/:formTemplateId", updateFormTemplate);
 formTemplateRouter.get("/list/:activityId", listAllFormTemplatesByActivityId);
-formTemplateRouter.post("/submit", createSubmission);
+formTemplateRouter.post("/submit/:formTemplateId", verifyToken, createSubmission);
 formTemplateRouter.get("/list", listAllFields);
-formTemplateRouter.get("/:formTemplateId", getFormTemplate);
 
 export default formTemplateRouter;

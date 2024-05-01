@@ -147,13 +147,15 @@ export const findFieldById = async (req, res) => {
 };
 
 export const createSubmission = async (req, res) => {
-  const { formTemplateId, allData, userId } = req.body;
+  const { allData } = req.body;
+  const userId = req.user.userId;
+  const formTemplateId = req.params.formTemplateId;
 
-  const alreadySubmitted = await Submissions.findOne({ userId, formTemplateId });
+  // const alreadySubmitted = await Submissions.findOne({ userId, formTemplateId });
 
-  if (alreadySubmitted) {
-    return res.status(400).json({ message: "You have already submitted this form" });
-  }
+  // if (alreadySubmitted) {
+  //   return res.status(400).json({ message: "You have already submitted this form" });
+  // }
 
   const existingFormTemplate = await FormTemplate.findOne({ _id: formTemplateId });
 
