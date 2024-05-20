@@ -1,6 +1,5 @@
 import {
   createFormTemplate,
-  createSubmission,
   listAllFields,
   getFormTemplate,
   updateFormTemplate,
@@ -16,7 +15,6 @@ formTemplateRouter.post("/create", createFormTemplate);
 formTemplateRouter.get("/:formTemplateId", getFormTemplate);
 formTemplateRouter.put("/update/:formTemplateId", updateFormTemplate);
 formTemplateRouter.get("/list/:activityId", listAllFormTemplatesByActivityId);
-formTemplateRouter.post("/submit/:formTemplateId", verifyToken, createSubmission);
 formTemplateRouter.get("/list", listAllFields);
 
 export default formTemplateRouter;
