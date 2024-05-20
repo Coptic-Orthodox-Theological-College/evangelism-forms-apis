@@ -1,78 +1,8 @@
 import Activity from "../models/activity.model.js";
+import FormTemplate from "../models/formTemplate.model.js";
 import { ObjectId } from 'mongodb';
-
-export const activities = [
-  {
-    _id: "60af884c2f9f9b1d2c8d9e11",
-    name: "الروحى",
-    description: "الروحى",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e12",
-    name: "الكتاب المقدس و المحفوظات",
-    description: "الكتاب المقدس و المحفوظات",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e13",
-    name: "البحوث",
-    description: "البحوث",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e14",
-    name: "الالحان و التسبحة",
-    description: "الالحان و التسبحة",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e15",
-    name: "اللغة القبطية",
-    description: "اللغة القبطية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e16",
-    name: "الانشطة الكنسية",
-    description: "الانشطة الكنسية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e17",
-    name: "ألادبية",
-    description: "ألادبية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e18",
-    name: "الثقافية",
-    description: "الثقافية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e19",
-    name: "الفنون التشكيلية",
-    description: "الفنون التشكيلية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e1a",
-    name: "الكمبيوتر",
-    description: "الكمبيوتر",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e1b",
-    name: "الاعلامية",
-    description: "الاعلامية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e1c",
-    name: "الابتكارية الهندسية و العلمية",
-    description: "الابتكارية الهندسية و العلمية",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e1d",
-    name: "قلب واحد",
-    description: "قلب واحد",
-  },
-  {
-    _id: "60af884c2f9f9b1d2c8d9e1e",
-    name: "الرياضية",
-    description: "الرياضية",
-  },
-];
+import { activities } from "./data.js";
+import { FormTemplates } from "./data.js";
 
 export const checkAndCreateActivities = async () => {
   try {
@@ -97,6 +27,39 @@ export const checkAndCreateActivities = async () => {
       }
     }
   } catch (err) {
+    console.log(err);
+  }
+}
+
+export const checkAndCreateFormTemplates = async () => {
+  try {
+    for (let i = 0; i < FormTemplates.length; i++) {
+      const formTemplateId = new ObjectId(FormTemplates[i]._id);
+      const formTemplate =
+        await FormTemplate.findOne({ _id: formTemplateId });
+      if (!formTemplate) {
+        const newFormTemplate = new FormTemplate({
+          _id: formTemplateId,
+          name: FormTemplates[i].name,
+          activityId: FormTemplates[i].activityId,
+          description: FormTemplates[i].description,
+          fields: FormTemplates[i].fields,
+          submittedBy: FormTemplates[i].submittedBy,
+        });
+        console.log("🚀 ~ checkAndCreateFormTemplates ~ newFormTemplate:", `${FormTemplates[i].name} created successfully`)
+        await newFormTemplate.save();
+      }
+      else {
+        if (formTemplate.name !== FormTemplates[i].name || formTemplate.description !== FormTemplates[i].description) {
+          formTemplate.name = FormTemplates[i].name;
+          formTemplate.description = FormTemplates[i].description;
+          console.log("🚀 ~ checkAndCreateFormTemplates ~ formTemplate updated successfully")
+          await formTemplate.save();
+        }
+      }
+    }
+  }
+  catch (err) {
     console.log(err);
   }
 }

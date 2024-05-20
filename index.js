@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import routes from './routes/index.routes.js';
 import { createAdminUser } from './utils/scripts.js';
-import { checkAndCreateActivities } from './scripts/index.js';
+import { checkAndCreateActivities, checkAndCreateFormTemplates } from './scripts/index.js';
 dotenv.config();
 
 const app = express();
@@ -28,7 +28,8 @@ mongoose.connect(process.env.MONGODB_URI, {
   })
   .catch((err) => console.log(err));
 
-checkAndCreateActivities()
+// checkAndCreateActivities()
+// checkAndCreateFormTemplates()
 
 // Routes
 app.use('/api', routes);
