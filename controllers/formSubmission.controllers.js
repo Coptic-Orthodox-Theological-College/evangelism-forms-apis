@@ -65,6 +65,32 @@ export const getOneSubmission = async (req, res) => {
   }
 };
 
+export const deleteSubmission = async (req, res) => {
+  const { submissionId } = req.params;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      success: false,
+      message: "لم يتم تقديم معرف الاستمارة"
+    });
+  }
+
+  try {
+    const submission = await Submissions.findOneAndDelete({ _id: submissionId });
+    if (!submission) {
+      return res.status(404).json({ success: false, message: "الاستمارة غير موجودة" });
+    }
+    await FormTemplate.findOneAndUpdate(
+      { _id: submission.formTemplateId },
+      { $pull: { submttedBy: { submissionId } } }
+    );
+    res.json({ success: true, message: "تم حذف الاستمارة بنجاح" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "خطأ , الرجاء المحاولة مرة أخرى" });
+  }
+}
+
 const checkFieldData = async (formFields, allData) => {
   for (let field of formFields) {
     const fieldData = await allData.find((data) => data.fieldId === field._id.toString());
