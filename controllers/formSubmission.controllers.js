@@ -91,6 +91,47 @@ export const deleteSubmission = async (req, res) => {
   }
 }
 
+export const updateSubmission = async (req, res) => {
+  const { submissionId } = req.params;
+  const { allData } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      success: false,
+      message: "لم يتم تقديم معرف الاستمارة"
+    });
+  }
+
+  const existingSubmission = await Submissions.findOne({ _id: submissionId });
+
+  if (!existingSubmission) {
+    return res.status(404).json({ success: false, message: "الاستمارة غير موجودة" });
+  }
+
+  const existingFormTemplate = await FormTemplate.findOne({ _id: existingSubmission.formTemplateId });
+
+  if (!existingFormTemplate) {
+    return res.status(404).json({ success: false, message: "النموذج غير موجود" });
+  }
+
+  const formFields = existingFormTemplate.fields;
+
+  const { valid, message } = await checkFieldData(formFields, allData);
+
+  if (!valid) {
+    return res.status(400).json({ success: false, message });
+  }
+
+  try {
+    await Submissions.findOneAndUpdate({ _id: submissionId }, { data: allData });
+    res.json({ success: true, message: "تم تحديث الاستمارة بنجاح" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "خطأ , الرجاء المحاولة مرة أخرى" });
+  }
+
+}
+
 const checkFieldData = async (formFields, allData) => {
   for (let field of formFields) {
     const fieldData = await allData.find((data) => data.fieldId === field._id.toString());
