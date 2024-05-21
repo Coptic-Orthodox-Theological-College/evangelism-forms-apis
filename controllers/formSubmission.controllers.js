@@ -164,6 +164,39 @@ const checkFieldData = async (formFields, allData) => {
         return { valid: false, message: `${field.name} مطلوب` };
       }
     }
+
+    if (fieldData && field.isNumber) {
+      const numberData = fieldData.value;
+      const maxNumber = field.ifNumber.maxNumber;
+      const minRequiredNames = field.ifNumber.minRequiredNames;
+      const maxRequiredNames = field.ifNumber.maxRequiredNames;
+
+      const allDataTemp = numberData.split(",");
+      const totalNumbersOfTeams = allDataTemp[0];
+      const teams = Array.from({ length: totalNumbersOfTeams }, () => []);
+
+      for (let i = 1; i < allDataTemp.length; i++) {
+        const [teamIndex, teamName] = allDataTemp[i].split(":");
+        const [teamNum, subNum] = teamIndex.split(".");
+
+        teams[parseInt(teamNum) - 1].push(teamName);
+      }
+
+      if (maxNumber !== -1 && totalNumbersOfTeams > maxNumber) {
+        return { valid: false, message: `عدد الفرق يتجاوز الحد الأقصى` };
+      }
+
+      for (let i = 0; i < teams.length; i++) {
+        const team = teams[i];
+        if (team.length < minRequiredNames) {
+          return { valid: false, message: `الفريق رقم ${i + 1} يحتاج إلى على الأقل ${minRequiredNames} اسماء` };
+        }
+
+        if (team.length > maxRequiredNames) {
+          return { valid: false, message: `الفريق رقم ${i + 1} يحتاج إلى ${maxRequiredNames} اسماء كحد أقصى` };
+        }
+      }
+    }
   }
   return { valid: true };
 };
