@@ -6,9 +6,9 @@ export const createFormTemplate = async (req, res) => {
 
   const existingFormTemplate = await FormTemplate.findOne({ name });
 
-  if (existingFormTemplate) {
-    return res.status(400).json({ message: "Form template already exists" });
-  }
+  // if (existingFormTemplate) {
+  //   return res.status(400).json({ message: "Form template already exists" });
+  // }
 
   if (!name || !description || !fields || !activityId) {
     const missingFields = [];
@@ -59,6 +59,18 @@ const validateFields = (fields) => {
       if (!field.values || field.values.length === 0) errMessages += "قيم الحقل المعرفة مطلوبة. ";
       if (field.numberOfChoices > field.values.length)
         errMessages += "عدد الخيارات يجب أن يكون أقل من أو يساوي عدد القيم المعرفة. ";
+    }
+    if (field.isNumber) {
+      if (field.ifNumber === undefined) {
+        errMessages += "يجب تحديد خصائص الرقم. ";
+      } else {
+        if (field.ifNumber.isPriced && field.ifNumber.price === undefined) errMessages += "يجب تحديد السعر. ";
+        if (field.ifNumber.isPriced && field.ifNumber.price <= 0) errMessages += "السعر يجب أن يكون أكبر من صفر. ";
+        if (field.ifNumber.minRequiredNames > field.ifNumber.maxRequiredNames)
+          errMessages += "الحد الأدنى لعدد الأسماء المطلوبة يجب أن يكون أقل من أو يساوي الحد الأقصى. ";
+        if (field.ifNumber.minRequiredNames < 0) errMessages += "الحد الأدنى لعدد الأسماء المطلوبة يجب أن يكون أكبر من صفر. ";
+        if (field.ifNumber.maxRequiredNames < 0) errMessages += "الحد الأقصى لعدد الأسماء المطلوبة يجب أن يكون أكبر من صفر. ";
+      }
     }
     if (field.isRequired === undefined) errMessages += "يجب تحديد ما إذا كان الحقل مطلوبًا أم لا. ";
   }
