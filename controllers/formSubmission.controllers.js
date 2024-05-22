@@ -181,7 +181,6 @@ const checkFieldData = async (formFields, allData) => {
 
         teams[parseInt(teamNum) - 1].push(teamName);
       }
-
       if (maxNumber !== -1 && totalNumbersOfTeams > maxNumber) {
         return { valid: false, message: `عدد الفرق يتجاوز الحد الأقصى` };
       }
