@@ -3,7 +3,6 @@ import Submissions from "../models/submissions.model.js";
 
 export const createSubmission = async (req, res) => {
   const { allData } = req.body;
-  console.log("🚀 ~ createSubmission ~ allData:", allData)
   const userId = req.user.userId;
   const formTemplateId = req.params.formTemplateId;
 
@@ -31,7 +30,6 @@ export const createSubmission = async (req, res) => {
 
   try {
     const submission = await newSubmission.save();
-    console.log("🚀 ~ createSubmission ~ submission._id:", submission._id)
     existingFormTemplate.submttedBy.push({
       userId, submissionId: submission._id, submittedAt: new Date(),
     });
