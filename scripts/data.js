@@ -1,12 +1,12 @@
 export const activities = [
   {
     _id: "60af884c2f9f9b1d2c8d9e11",
-    name: "الروحى",
+    name: "روحى",
     description: "الروحى",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e12",
-    name: "الكتاب المقدس و المحفوظات",
+    name: "المحفوظات و القبطى",
     description: "الكتاب المقدس و المحفوظات",
   },
   {
@@ -20,9 +20,9 @@ export const activities = [
     description: "الالحان و التسبحة",
   },
   {
-    _id: "60af884c2f9f9b1d2c8d9e15",
-    name: "اللغة القبطية",
-    description: "اللغة القبطية",
+    _id: "60af884c2f9f9b1d2c8d9e1d",
+    name: " رياضى بنات",
+    description: "رياضى بنات",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e16",
@@ -60,13 +60,13 @@ export const activities = [
     description: "الابتكارية الهندسية و العلمية",
   },
   {
-    _id: "60af884c2f9f9b1d2c8d9e1d",
+    _id: "60af884c2f9f9b1d2c8d9e15",
     name: "قلب واحد",
     description: "قلب واحد",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e1e",
-    name: "الرياضية",
+    name: "رياضي بنين",
     description: "الرياضية",
   },
 ];
