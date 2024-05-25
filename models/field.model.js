@@ -26,7 +26,7 @@ export const FieldSchema = new Schema({
         }
       },
       maxNumber: { type: Number, required: false, default: -1 },
-      nameTitle: { type: String, required: true },
+      nameTitle: { type: String, required: false },
       minRequiredNames: { type: Number, required: false, default: 0 },
       maxRequiredNames: { type: Number, required: false, default: 0 },
     },
