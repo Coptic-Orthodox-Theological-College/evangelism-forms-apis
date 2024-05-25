@@ -18,12 +18,19 @@ export const checkAndCreateActivities = async () => {
         console.log("🚀 ~ checkAndCreateActivities ~ newActivity:", `${activities[i].name} created successfully`)
         await newActivity.save();
       } else {
-        if (activity.name !== activities[i].name || activity.description !== activities[i].description) {
+        if (activity !== activities[i]) {
           activity.name = activities[i].name;
           activity.description = activities[i].description;
           console.log("🚀 ~ checkAndCreateActivities ~ activity updated successfully")
           await activity.save();
         }
+      }
+    }
+    const allActivities = await Activity.find();
+    for (let activity of allActivities) {
+      if (!activities.find((act) => act._id === activity._id.toString())) {
+        await Activity.deleteOne({ _id: activity._id });
+        console.log("🚀 ~ checkAndCreateActivities ~ activity deleted successfully")
       }
     }
   } catch (err) {
@@ -48,18 +55,27 @@ export const checkAndCreateFormTemplates = async () => {
         });
         console.log("🚀 ~ checkAndCreateFormTemplates ~ newFormTemplate:", `${FormTemplates[i].name} created successfully`)
         await newFormTemplate.save();
-      }
-      else {
-        if (formTemplate.name !== FormTemplates[i].name || formTemplate.description !== FormTemplates[i].description) {
+      } else {
+        if (formTemplate !== FormTemplates[i]) {
           formTemplate.name = FormTemplates[i].name;
+          formTemplate.activityId = FormTemplates[i].activityId;
           formTemplate.description = FormTemplates[i].description;
-          console.log("🚀 ~ checkAndCreateFormTemplates ~ formTemplate updated successfully")
+          formTemplate.fields = FormTemplates[i].fields;
+          console.log("🚀 ~ checkAndCreateFormTemplates ~ formTemplate", `${FormTemplates[i].name} updated successfully`)
           await formTemplate.save();
         }
       }
     }
-  }
-  catch (err) {
+    // check if there are any form templates in the database that are not in the data.js file and delete them
+    const formTemplates = await FormTemplate.find();
+    for (let formTemplate of formTemplates) {
+      if (!FormTemplates.find((template) => template._id === formTemplate._id.toString())) {
+        await FormTemplate.deleteOne({ _id: formTemplate._id });
+        console.log("🚀 ~ checkAndCreateFormTemplates ~ formTemplate", `${formTemplate.name} deleted successfully`
+        );
+      }
+    }
+  } catch (err) {
     console.log(err);
   }
 }
