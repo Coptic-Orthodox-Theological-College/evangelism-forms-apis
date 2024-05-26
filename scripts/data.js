@@ -572,4 +572,90 @@ export const FormTemplates =
      * 2-> مايم - عدد الفرق - 50
      * 3-> مونو دراما - عدد المشاركين - 50- اسم المشارك
      */
+    {
+      "_id": "664b48137565dd25fca12233",
+      "name": "مسرح تقليدى",
+      "activityId": "60af884c2f9f9b1d2c8d9e16",
+      "description": "استمارة لتسجيل المسرح التقليدى",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الفرق",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 50,
+            "maxNumber": 50,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12234",
+      "name": "مسرح المايم",
+      "activityId": "60af884c2f9f9b1d2c8d9e16",
+      "description": "استمارة لتسجيل مسرح المايم",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الفرق",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 50,
+            "maxNumber": 50,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12235",
+      "name": "مونو دراما",
+      "activityId": "60af884c2f9f9b1d2c8d9e16",
+      "description": "استمارة لتسجيل المونو دراما",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد المشاركين",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 50,
+            "maxNumber": 50,
+            "nameTitle": "اسم المشارك",
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12236",
+      "name": "ديو دراما",
+      "activityId": "60af884c2f9f9b1d2c8d9e16",
+      "description": "استمارة لتسجيل الديو دراما",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الفرق",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 100,
+            "maxNumber": 50,
+            "nameTitle": "الفريق",
+            "minRequiredNames": 2,
+            "maxRequiredNames": 2,
+          },
+        },
+      ],
+    },
   ];
