@@ -104,7 +104,7 @@ export const FormTemplates =
           "order": 1,
           "name": "الرب نورى و خلاصى",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -114,9 +114,9 @@ export const FormTemplates =
         },
         {
           "order": 2,
-          "name": "الرب نورى و خلاصى",
+          "name": "هل يمكن ان تطفئ الشمس",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -126,9 +126,9 @@ export const FormTemplates =
         },
         {
           "order": 3,
-          "name": "هل يمكن ان تطفئ الشمس",
+          "name": "شخص ورى جدا",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -138,9 +138,9 @@ export const FormTemplates =
         },
         {
           "order": 4,
-          "name": "شخص ورى جدا",
+          "name": "خلقنا ذكور واناث",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -150,9 +150,9 @@ export const FormTemplates =
         },
         {
           "order": 5,
-          "name": "خلقنا ذكور واناث",
+          "name": "التقليد الكنسى",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -162,21 +162,9 @@ export const FormTemplates =
         },
         {
           "order": 6,
-          "name": "التقليد الكنسى",
-          "description": "ادخل عدد المشاركين",
-          "isRequired": true,
-          "isNumber": true,
-          "ifNumber": {
-            "isPriced": true,
-            "price": 20,
-            "maxNumber": 50,
-          },
-        },
-        {
-          "order": 7,
           "name": "فردى كرازة",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -197,7 +185,7 @@ export const FormTemplates =
           "order": 1,
           "name": "المحفوظات",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -209,7 +197,7 @@ export const FormTemplates =
           "order": 2,
           "name": "قبطى م1",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -221,7 +209,7 @@ export const FormTemplates =
           "order": 3,
           "name": "قبطى م2",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -242,7 +230,7 @@ export const FormTemplates =
           "order": 1,
           "name": "المستوى الاول",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -254,7 +242,7 @@ export const FormTemplates =
           "order": 2,
           "name": "المستوى الثانى",
           "description": "ادخل عدد المشاركين",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -266,7 +254,7 @@ export const FormTemplates =
           "order": 3,
           "name": "مستوى المتميزين الجماعى",
           "description": "ادخل عدد الفرق",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -287,7 +275,7 @@ export const FormTemplates =
           "order": 1,
           "name": "كرة القدم",
           "description": "ادخل عدد الفرق",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -299,7 +287,7 @@ export const FormTemplates =
           "order": 2,
           "name": "كرة طائرة",
           "description": "ادخل عدد الفرق",
-          "isRequired": true,
+          "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
@@ -406,5 +394,182 @@ export const FormTemplates =
           },
         },
       ],
-    }
+    },
+    // رياضى بنات : (60af884c2f9f9b1d2c8d9e1d)
+    {
+      "_id": "664b48137565dd25fca12228",
+      "name": "رياضى بنات جماعى",
+      "activityId": "60af884c2f9f9b1d2c8d9e1d",
+      "description": "استمارة لتسجيل  لكرة القدم و كرة الطائرة",
+      "fields": [
+        {
+          "order": 1,
+          "name": "كرة القدم",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 150,
+            "maxNumber": 50,
+          },
+        },
+        {
+          "order": 2,
+          "name": "كرة طائرة",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 100,
+            "maxNumber": 50,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12229",
+      "name": "رياضى بنات فردى",
+      "activityId": "60af884c2f9f9b1d2c8d9e1d",
+      "description": "شطرنج - تنس طاولة - كونيكت - دومينو",
+      "fields": [
+        {
+          "order": 1,
+          "name": "شطرنج",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "nameTitle": "اسم اللاعبة",
+            "price": 20,
+            "maxNumber": 50,
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+        {
+          "order": 2,
+          "name": "تنس طاولة",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "nameTitle": "اسم اللاعبة",
+            "price": 20,
+            "maxNumber": 50,
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+        {
+          "order": 3,
+          "name": "كونيكت",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "nameTitle": "اسم اللاعبة",
+            "price": 20,
+            "maxNumber": 50,
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+        {
+          "order": 4,
+          "name": "دومينو",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "nameTitle": "اسم اللاعبة",
+            "price": 20,
+            "maxNumber": 50,
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    // الابحاث : (60af884c2f9f9b1d2c8d9e13)
+    {
+      "_id": "664b48137565dd25fca12230",
+      "name": "نظرى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث النظرية",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 10,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12231",
+      "name": "ميدانى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث الميدانية",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 20,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12232",
+      "name": "ثقافى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث الثقافية",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد المشاركين",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 15,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    // الانشطة الكنسية : (60af884c2f9f9b1d2c8d9e16)
+    /**
+     * 1-> مسرح تقليدى - عدد الفرق - 50
+     * 2-> مايم - عدد الفرق - 50
+     * 3-> مونو دراما - عدد المشاركين - 50- اسم المشارك
+     */
   ];
