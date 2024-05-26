@@ -27,13 +27,7 @@ export const createActivity = async (req, res) => {
 export const getActivities = async (req, res) => {
   try {
     const data = await Activity.find();
-    let activities = [];
-    for (let i = 0; i < data.length; i++) {
-      const activity = data[i]._doc;
-      const formTemplates = await FormTemplate.find({ activityId: activity._id });
-      activities.push({ ...activity, formTemplatesCount: formTemplates.length });
-    }
-    res.json({ success: true, activities });
+    res.json({ success: true, activities: data });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });
