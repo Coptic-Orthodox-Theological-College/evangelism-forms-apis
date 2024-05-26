@@ -5,8 +5,8 @@ const activitySchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   ifHaveOneForm: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "FormTemplate",
+    type: Object,
+    default: null,
   },
 });
 
@@ -15,7 +15,7 @@ activitySchema.pre("save", async function (next) {
   const count = await FormTemplate.countDocuments({ activityId: this._id });
   if (count === 1) {
     const form = await FormTemplate.findOne({ activityId: this._id });
-    this.ifHaveOneForm = form._id;
+    this.ifHaveOneForm = form;
   } else {
     this.ifHaveOneForm = null;
   }
