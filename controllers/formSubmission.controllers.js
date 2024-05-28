@@ -172,7 +172,7 @@ const checkFieldData = async (formFields, allData) => {
       const allDataTemp = numberData.split(",");
       const totalNumbersOfTeams = allDataTemp[0];
       const teams = Array.from({ length: totalNumbersOfTeams }, () => []);
-
+      
       for (let i = 1; i < allDataTemp.length; i++) {
         const [teamIndex, teamName] = allDataTemp[i].split(":");
         const [teamNum, subNum] = teamIndex.split(".");
@@ -182,6 +182,8 @@ const checkFieldData = async (formFields, allData) => {
       if (maxNumber !== -1 && totalNumbersOfTeams > maxNumber) {
         return { valid: false, message: `عدد الفرق يتجاوز الحد الأقصى` };
       }
+
+      console.log("🚀 ~ checkFieldData ~ teams:", teams)
 
       for (let i = 0; i < teams.length; i++) {
         const team = teams[i];

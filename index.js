@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   .catch((err) => console.log(err));
 
 // checkAndCreateActivities()
-// checkAndCreateFormTemplates()
+checkAndCreateFormTemplates()
 
 // Routes
 app.use('/api', routes);

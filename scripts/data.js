@@ -397,7 +397,7 @@ export const FormTemplates =
     },
     // رياضى بنات : (60af884c2f9f9b1d2c8d9e1d)
     {
-      "_id": "664b48137565dd25fca12228",
+      "_id": "664b48137565dd25fca12239",
       "name": "رياضى بنات جماعى",
       "activityId": "60af884c2f9f9b1d2c8d9e1d",
       "description": "استمارة لتسجيل  لكرة القدم و كرة الطائرة",
@@ -429,7 +429,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12229",
+      "_id": "664b48137565dd25fca12230",
       "name": "رياضى بنات فردى",
       "activityId": "60af884c2f9f9b1d2c8d9e1d",
       "description": "شطرنج - تنس طاولة - كونيكت - دومينو",
@@ -498,7 +498,7 @@ export const FormTemplates =
     },
     // الابحاث : (60af884c2f9f9b1d2c8d9e13)
     {
-      "_id": "664b48137565dd25fca12230",
+      "_id": "664b48137565dd25fca12231",
       "name": "نظرى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
       "description": "استمارة لتسجيل الأبحاث النظرية",
@@ -521,7 +521,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12231",
+      "_id": "664b48137565dd25fca12232",
       "name": "ميدانى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
       "description": "استمارة لتسجيل الأبحاث الميدانية",
@@ -544,7 +544,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12232",
+      "_id": "664b48137565dd25fca12233",
       "name": "ثقافى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
       "description": "استمارة لتسجيل الأبحاث الثقافية",
@@ -567,13 +567,8 @@ export const FormTemplates =
       ],
     },
     // الانشطة الكنسية : (60af884c2f9f9b1d2c8d9e16)
-    /**
-     * 1-> مسرح تقليدى - عدد الفرق - 50
-     * 2-> مايم - عدد الفرق - 50
-     * 3-> مونو دراما - عدد المشاركين - 50- اسم المشارك
-     */
     {
-      "_id": "664b48137565dd25fca12233",
+      "_id": "664b48137565dd25fca12234",
       "name": "مسرح تقليدى",
       "activityId": "60af884c2f9f9b1d2c8d9e16",
       "description": "استمارة لتسجيل المسرح التقليدى",
@@ -593,7 +588,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12234",
+      "_id": "664b48137565dd25fca12235",
       "name": "مسرح المايم",
       "activityId": "60af884c2f9f9b1d2c8d9e16",
       "description": "استمارة لتسجيل مسرح المايم",
@@ -613,7 +608,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12235",
+      "_id": "664b48137565dd25fca12236",
       "name": "مونو دراما",
       "activityId": "60af884c2f9f9b1d2c8d9e16",
       "description": "استمارة لتسجيل المونو دراما",
@@ -636,7 +631,7 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12236",
+      "_id": "664b48137565dd25fca12237",
       "name": "ديو دراما",
       "activityId": "60af884c2f9f9b1d2c8d9e16",
       "description": "استمارة لتسجيل الديو دراما",
@@ -649,7 +644,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 100,
+            "price": 200,
             "maxNumber": 50,
             "nameTitle": "الفريق",
             "minRequiredNames": 2,
