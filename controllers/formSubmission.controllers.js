@@ -183,8 +183,6 @@ const checkFieldData = async (formFields, allData) => {
         return { valid: false, message: `عدد الفرق يتجاوز الحد الأقصى` };
       }
 
-      console.log("🚀 ~ checkFieldData ~ teams:", teams)
-
       for (let i = 0; i < teams.length; i++) {
         const team = teams[i];
         if (team.length < minRequiredNames) {
