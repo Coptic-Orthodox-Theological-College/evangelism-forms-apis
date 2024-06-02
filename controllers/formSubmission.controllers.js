@@ -2,7 +2,7 @@ import FormTemplate from "../models/formTemplate.model.js";
 import Submissions from "../models/submissions.model.js";
 
 export const createSubmission = async (req, res) => {
-  const { allData } = req.body;
+  const { allData, totalPrice } = req.body;
   const userId = req.user.userId;
   const formTemplateId = req.params.formTemplateId;
 
@@ -26,7 +26,7 @@ export const createSubmission = async (req, res) => {
     return res.status(400).json({ success: false, message });
   }
 
-  const newSubmission = new Submissions({ userId, formTemplateId, data: allData });
+  const newSubmission = new Submissions({ userId, formTemplateId, data: allData, totalPrice });
 
   try {
     const submission = await newSubmission.save();
@@ -172,7 +172,7 @@ const checkFieldData = async (formFields, allData) => {
       const allDataTemp = numberData.split(",");
       const totalNumbersOfTeams = allDataTemp[0];
       const teams = Array.from({ length: totalNumbersOfTeams }, () => []);
-      
+
       for (let i = 1; i < allDataTemp.length; i++) {
         const [teamIndex, teamName] = allDataTemp[i].split(":");
         const [teamNum, subNum] = teamIndex.split(".");

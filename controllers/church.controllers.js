@@ -1,5 +1,5 @@
 import Church from "../models/church.model.js";
-import User from "../models/user.model.js";
+import Submissions from "../models/submissions.model.js";
 
 export const getChurch = async (req, res) => {
   const { userId } = req.user;
@@ -37,10 +37,57 @@ export const createChurch = async (req, res) => {
   }
 }
 
+export const updateChurch = async (req, res) => {
+  const { userId } = req.user;
+  const { name, address, responsiblePerson, phone } = req.body;
+
+  try {
+    const church = await Church.findOne({ userId });
+    if (!church) {
+      return res.json({ success: false, message: "Church not found" });
+    }
+
+    name && (church.name = name);
+    address && (church.address = address);
+    responsiblePerson && (church.responsiblePerson = responsiblePerson);
+    phone && (church.phone = phone);
+
+    await church.save();
+
+    res.json({ success: true, church });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
 export const getChurchs = async (req, res) => {
   try {
     const churchs = await Church.find();
     res.json({ success: true, churchs });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
+export const getAllChurchSubbmissions = async (req, res) => {
+  const { userId } = req.user;
+
+  try {
+    const church = await Church.findOne({ userId });
+    if (!church) {
+      return res.json({ success: false, message: "Church not found" });
+    }
+
+    const submissions = await Submissions.find({ userId }).populate(
+      {
+        path: "formTemplateId",
+        populate: {
+          path: "activityId",
+        },
+      });
+    res.json({ success: true, submissions });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });

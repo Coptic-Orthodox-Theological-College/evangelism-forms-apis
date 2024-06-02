@@ -3,7 +3,7 @@ import { FieldSchema } from "./field.model.js";
 
 const FormTemplateSchema = new Schema({
   name: { type: String, required: true },
-  activityId: { type: Schema.Types.ObjectId, ref: "Activity", required: true },
+  activityId: { type: Schema.Types.ObjectId, ref: "Activities", required: true },
   description: { type: String, required: true },
   fields: [FieldSchema],
   submttedBy: [{
