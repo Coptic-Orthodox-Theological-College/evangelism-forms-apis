@@ -27,8 +27,7 @@ export const createActivity = async (req, res) => {
 export const getActivities = async (req, res) => {
   try {
     let data = await Activity.find();
-    let temp = data.map(activity => activity.toObject()); // Convert Mongoose documents to plain objects
-    console.log("🚀 ~ getActivities ~ temp:", temp);
+    let temp = data.map(activity => activity.toObject());
 
     for (let i = 0; i < temp.length; i++) {
       const count = await FormTemplate.countDocuments({ activityId: temp[i]._id });
