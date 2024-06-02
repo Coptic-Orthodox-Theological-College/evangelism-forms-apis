@@ -91,7 +91,7 @@ export const deleteSubmission = async (req, res) => {
 
 export const updateSubmission = async (req, res) => {
   const { submissionId } = req.params;
-  const { allData } = req.body;
+  const { allData, totalPrice } = req.body;
 
   if (!submissionId) {
     return res.status(400).json({
@@ -121,7 +121,7 @@ export const updateSubmission = async (req, res) => {
   }
 
   try {
-    await Submissions.findOneAndUpdate({ _id: submissionId }, { data: allData });
+    await Submissions.findOneAndUpdate({ _id: submissionId }, { data: allData, totalPrice });
     res.json({ success: true, message: "تم تحديث الاستمارة بنجاح" });
   } catch (err) {
     console.log(err);
