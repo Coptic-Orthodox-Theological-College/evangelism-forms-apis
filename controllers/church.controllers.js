@@ -18,7 +18,7 @@ export const getChurch = async (req, res) => {
 
 export const createChurch = async (req, res) => {
   const { userId } = req.user;
-  const { name, address } = req.body;
+  const { name, address, responsiblePerson, phone } = req.body;
 
   const existingChurch = await Church.findOne({ userId });
 
@@ -26,7 +26,7 @@ export const createChurch = async (req, res) => {
     return res.status(400).json({ message: "يوجد بالفعل كنيسة مسجلة" });
   }
 
-  const church = new Church({ userId, name, address });
+  const church = new Church({ userId, name, address, responsiblePerson, phone });
 
   try {
     await church.save();
