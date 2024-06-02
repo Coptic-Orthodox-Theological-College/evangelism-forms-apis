@@ -26,8 +26,21 @@ export const createActivity = async (req, res) => {
 
 export const getActivities = async (req, res) => {
   try {
-    const data = await Activity.find();
-    res.json({ success: true, activities: data });
+    let data = await Activity.find();
+    let temp = data.map(activity => activity.toObject()); // Convert Mongoose documents to plain objects
+    console.log("🚀 ~ getActivities ~ temp:", temp);
+
+    for (let i = 0; i < temp.length; i++) {
+      const count = await FormTemplate.countDocuments({ activityId: temp[i]._id });
+      if (count === 1) {
+        const form = await FormTemplate.findOne({ activityId: temp[i]._id });
+        temp[i].ifHaveOneForm = form;
+      } else {
+        temp[i].ifHaveOneForm = null;
+      }
+    }
+
+    res.json({ success: true, activities: temp });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server error" });
