@@ -10,6 +10,7 @@ const userSchema = new Schema({
     required: true,
     default: "church",
   },
+  isTest: { type: Boolean, default: false },
 });
 
 userSchema.pre("save", async function (next) {
