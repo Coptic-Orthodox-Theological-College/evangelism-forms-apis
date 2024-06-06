@@ -33,7 +33,7 @@ export const createUsers = async (req, res) => {
     let newUser = new User({ username, password });
     try {
       await newUser.save();
-      users.push({ username, password });
+      users.push({index: i + 1, username, password});
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: "Server error" });
