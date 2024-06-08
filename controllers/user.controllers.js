@@ -33,7 +33,7 @@ export const createUsers = async (req, res) => {
     let newUser = new User({ username, password });
     try {
       await newUser.save();
-      users.push({index: i + 1, username, password});
+      users.push({ index: i + 1, username, password });
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: "Server error" });
@@ -49,7 +49,7 @@ export const createUsers = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const { userId } = req.params;
-  const { username, password } = req.body;
+  const { username, password, role, isTest } = req.body;
 
   try {
     let user = await User.findById(userId);
@@ -60,6 +60,8 @@ export const updateUser = async (req, res) => {
       password.length < 8
         ? res.status(400).json({ message: "Password must be at least 8 characters" })
         : user.password = password;
+    if (role) user.role = role;
+    if (isTest) user.isTest = isTest;
     await user.save();
     res.json({ success: true, message: "User updated" });
   } catch (err) {

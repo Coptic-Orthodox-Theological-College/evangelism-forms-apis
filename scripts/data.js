@@ -2,27 +2,27 @@ export const activities = [
   {
     _id: "60af884c2f9f9b1d2c8d9e11",
     name: "روحى",
-    description: "الروحى",
+    description: "المسابقة الدراسية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e12",
     name: "المحفوظات و القبطى",
-    description: "الكتاب المقدس و المحفوظات",
+    description: "مسابقة المحفوظات و  اللغة القبطية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e13",
-    name: "البحوث",
-    description: "البحوث",
+    name: "الأبحاث",
+    description: "مسابقة الأبحاث",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e14",
     name: "الالحان و التسبحة",
-    description: "الالحان و التسبحة",
+    description: "مسابقة الالحان و التسبحة",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e1d",
     name: " رياضى بنات",
-    description: "رياضى بنات",
+    description: "مسابقة الرياضى بنات",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e16",
@@ -32,17 +32,17 @@ export const activities = [
   {
     _id: "60af884c2f9f9b1d2c8d9e17",
     name: "ألادبية",
-    description: "ألادبية",
+    description: "المسابقة الادبية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e18",
     name: "الثقافية",
-    description: "الثقافية",
+    description: "المسابقة الثقافية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e19",
     name: "الفنون التشكيلية",
-    description: "الفنون التشكيلية",
+    description: "مسابقة الفنون التشكيلية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e1a",
@@ -52,12 +52,12 @@ export const activities = [
   {
     _id: "60af884c2f9f9b1d2c8d9e1b",
     name: "الاعلامية",
-    description: "الاعلامية",
+    description: "المسابقة الاعلامية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e1c",
     name: "الابتكارية الهندسية و العلمية",
-    description: "الابتكارية الهندسية و العلمية",
+    description: "مسابقة الابتكارية الهندسية و العلمية",
   },
   {
     _id: "60af884c2f9f9b1d2c8d9e15",
@@ -67,13 +67,13 @@ export const activities = [
   {
     _id: "60af884c2f9f9b1d2c8d9e1e",
     name: "رياضي بنين",
-    description: "الرياضية",
+    description: "مسابقة الرياضى بنين",
   },
 ];
 
 export const FormTemplates =
   [
-    // روحى : (60af884c2f9f9b1d2c8d9e11)
+    // روحى : (60af884c2f9f9b1d2c8d9e11) done
     {
       "_id": "664b48137565dd25fca12224",
       "name": "روحى جماعى",
@@ -88,7 +88,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 100,
+            "price": 150,
             "maxNumber": 50,
           },
         },
@@ -108,43 +108,43 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 50,
             "maxNumber": 50,
           },
         },
         {
           "order": 2,
-          "name": "هل يمكن ان تطفئ الشمس",
+          "name": "هل يمكن ان تطفأ الشمس؟",
           "description": "ادخل عدد المشاركين",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 50,
             "maxNumber": 50,
           },
         },
         {
           "order": 3,
-          "name": "شخص ورى جدا",
+          "name": "شخص وسرى جدا",
           "description": "ادخل عدد المشاركين",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 50,
             "maxNumber": 50,
           },
         },
         {
           "order": 4,
-          "name": "خلقنا ذكور واناث",
+          "name": "خلقنهما ذكر وانثى",
           "description": "ادخل عدد المشاركين",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 50,
             "maxNumber": 50,
           },
         },
@@ -156,7 +156,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 50,
             "maxNumber": 50,
           },
         },
@@ -168,13 +168,13 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 70,
             "maxNumber": 50,
           },
         },
       ],
     },
-    // المحفوظات و القبطى : (60af884c2f9f9b1d2c8d9e12)
+    // المحفوظات و القبطى : (60af884c2f9f9b1d2c8d9e12) done
     {
       "_id": "664b48137565dd25fca12226",
       "name": "المحفوظات و القبطى",
@@ -189,7 +189,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 25,
+            "price": 50,
             "maxNumber": 50,
           },
         },
@@ -201,7 +201,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 25,
+            "price": 50,
             "maxNumber": 50,
           },
         },
@@ -213,13 +213,13 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 25,
+            "price": 50,
             "maxNumber": 50,
           },
         },
       ],
     },
-    // الالحان و التسبحة : (60af884c2f9f9b1d2c8d9e14)
+    // الالحان و التسبحة : (60af884c2f9f9b1d2c8d9e14) done
     {
       "_id": "664b48137565dd25fca12227",
       "name": "الالحان و التسبحة",
@@ -228,37 +228,37 @@ export const FormTemplates =
       "fields": [
         {
           "order": 1,
-          "name": "المستوى الاول",
+          "name": "المستوى الاول جماعى",
           "description": "ادخل عدد المشاركين",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 25,
+            "price": 300,
             "maxNumber": 50,
           },
         },
         {
           "order": 2,
-          "name": "المستوى الثانى",
+          "name": "المستوى الثانى جماعى",
           "description": "ادخل عدد المشاركين",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 25,
+            "price": 300,
             "maxNumber": 50,
           },
         },
         {
           "order": 3,
-          "name": "مستوى المتميزين الجماعى",
+          "name": "مستوى التميز جماعى",
           "description": "ادخل عدد الفرق",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 300,
             "maxNumber": 50,
           },
         },
@@ -499,32 +499,78 @@ export const FormTemplates =
     // الابحاث : (60af884c2f9f9b1d2c8d9e13)
     {
       "_id": "664b48137565dd25fca12231",
-      "name": "نظرى",
+      "name": "نظرى جماعى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
-      "description": "استمارة لتسجيل الأبحاث النظرية",
+      "description": "استمارة لتسجيل الأبحاث النظرى الجماعى",
       "fields": [
         {
           "order": 1,
           "name": "عدد الابحاث",
-          "description": "ادخل عدد المشاركين",
+          "description": "ادخل عدد الفرق",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 10,
+            "price": 150,
             "maxNumber": 50,
             "nameTitle": "اسم الباحث",
-            "minRequiredNames": 1,
-            "maxRequiredNames": 1,
+            "minRequiredNames": 3,
+            "maxRequiredNames": 10,
           },
         },
       ],
     },
     {
       "_id": "664b48137565dd25fca12232",
-      "name": "ميدانى",
+      "name": "ميدانى جماعى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
-      "description": "استمارة لتسجيل الأبحاث الميدانية",
+      "description": "استمارة لتسجيل الأبحاث الميدانية الجماعية",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 150,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 3,
+            "maxRequiredNames": 10,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12233",
+      "name": "ثقافى جماعى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث الثقافية جماعى",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 150,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 3,
+            "maxRequiredNames": 10,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12288",
+      "name": "نظرى فردى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث النظرى الفردى",
       "fields": [
         {
           "order": 1,
@@ -534,7 +580,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 20,
+            "price": 75,
             "maxNumber": 50,
             "nameTitle": "اسم الباحث",
             "minRequiredNames": 1,
@@ -544,20 +590,43 @@ export const FormTemplates =
       ],
     },
     {
-      "_id": "664b48137565dd25fca12233",
-      "name": "ثقافى",
+      "_id": "664b48137565dd25fca12289",
+      "name": "ميدانى فردى",
       "activityId": "60af884c2f9f9b1d2c8d9e13",
-      "description": "استمارة لتسجيل الأبحاث الثقافية",
+      "description": "استمارة لتسجيل الأبحاث الميدانية الفردى",
       "fields": [
         {
           "order": 1,
           "name": "عدد الابحاث",
-          "description": "ادخل عدد المشاركين",
+          "description": "ادخل عدد الفرق",
           "isRequired": false,
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 15,
+            "price": 75,
+            "maxNumber": 50,
+            "nameTitle": "اسم الباحث",
+            "minRequiredNames": 1,
+            "maxRequiredNames": 1,
+          },
+        },
+      ],
+    },
+    {
+      "_id": "664b48137565dd25fca12290",
+      "name": "ثقافى فردى",
+      "activityId": "60af884c2f9f9b1d2c8d9e13",
+      "description": "استمارة لتسجيل الأبحاث الثقافية الفردى",
+      "fields": [
+        {
+          "order": 1,
+          "name": "عدد الابحاث",
+          "description": "ادخل عدد الفرق",
+          "isRequired": false,
+          "isNumber": true,
+          "ifNumber": {
+            "isPriced": true,
+            "price": 75,
             "maxNumber": 50,
             "nameTitle": "اسم الباحث",
             "minRequiredNames": 1,
@@ -946,7 +1015,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -969,7 +1038,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -992,7 +1061,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -1015,7 +1084,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -1038,7 +1107,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -1061,7 +1130,7 @@ export const FormTemplates =
           "isNumber": true,
           "ifNumber": {
             "isPriced": true,
-            "price": 50,
+            "price": 70,
             "maxNumber": 50,
             "nameTitle": "المشارك",
             "minRequiredNames": 1,
@@ -1070,29 +1139,29 @@ export const FormTemplates =
         },
       ],
     },
-    {
-      "_id": "664b48137565dd25fca12258",
-      "name": "ريفيو ادبى",
-      "activityId": "60af884c2f9f9b1d2c8d9e17",
-      "description": "استمارة لتسجيل ريفيو ادبى",
-      "fields": [
-        {
-          "order": 1,
-          "name": "عدد المشاركين",
-          "description": "ادخل عدد المشاركين",
-          "isRequired": false,
-          "isNumber": true,
-          "ifNumber": {
-            "isPriced": true,
-            "price": 50,
-            "maxNumber": 50,
-            "nameTitle": "المشارك",
-            "minRequiredNames": 1,
-            "maxRequiredNames": 1,
-          },
-        },
-      ],
-    },
+    // {
+    //   "_id": "664b48137565dd25fca12258",
+    //   "name": "ريفيو ادبى",
+    //   "activityId": "60af884c2f9f9b1d2c8d9e17",
+    //   "description": "استمارة لتسجيل ريفيو ادبى",
+    //   "fields": [
+    //     {
+    //       "order": 1,
+    //       "name": "عدد المشاركين",
+    //       "description": "ادخل عدد المشاركين",
+    //       "isRequired": false,
+    //       "isNumber": true,
+    //       "ifNumber": {
+    //         "isPriced": true,
+    //         "price": 50,
+    //         "maxNumber": 50,
+    //         "nameTitle": "المشارك",
+    //         "minRequiredNames": 1,
+    //         "maxRequiredNames": 1,
+    //       },
+    //     },
+    //   ],
+    // },
     // الثقافية : (60af884c2f9f9b1d2c8d9e18)
     {
       "_id": "664b48137565dd25fca12259",

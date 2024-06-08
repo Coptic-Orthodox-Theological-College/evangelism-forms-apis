@@ -11,6 +11,12 @@ export const verifyToken = (req, res, next) => {
   try {
     const token = bearerToken.split(' ')[1];
     const verified = jwt.verify(token, process.env.JWT_SECRET);
+
+    // // check expiration
+    // if (Date.now() >= verified.exp * 1000) {
+    //   return res.status(401).json({ message: 'Token expired' });
+    // }
+
     req.user = verified;
     next();
   } catch (err) {
